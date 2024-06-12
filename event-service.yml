@@ -1,0 +1,58 @@
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8079/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+      
+spring:
+  application:
+    name: event-service
+    
+  datasource:
+    url: jdbc:mariadb://localhost/event_database
+    username: ${db_user}
+    password: ${db_password}
+    driver-class-name: org.mariadb.jdbc.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    
+  flyway:
+    baseline-on-migrate: true
+    out-of-order: true
+    baseline-version: 0
+    locations:
+      - classpath:/db/migration
+
+application:
+  registration:
+    user-details-request-topic: user-details-request
+    user-details-response-topic: user-details-response
+  registration.sse.timeout: 120000 # 2 minutes
+  jobs:
+    auto-start-end-event: 0 0/1 * ? * * # every 1 minute
+    geolocation-scan: 0 0/2 * ? * * # every 2 minutes
+  urlShortener:
+    urlShortenerBaseUrl: https://tinyurl.com/api-create.php
+    appBaseUrl: http://localhost:3000
+  geolocation:
+    apiUrl: http://ip-api.com/batch
+    amountOfRecordsToProcess: 90
+    geolocation-request-topic: ip-request-topic
+    geolocation-response-topic: ip-response-topic
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer-group-id: event-service
+    retry-back-off-interval-ms: 2000
+    retry-max-attempts: 5
+    dlq-topic-name: event-service-dlq
+    outbox-fixed-delay: 5000

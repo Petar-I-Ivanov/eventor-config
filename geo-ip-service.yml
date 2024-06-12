@@ -1,0 +1,12 @@
+application:
+  ip-request-topic-name: ip-request-topic
+  partitions-count: 1 # suitable only for local development
+  replication-factor: 1 # suitable only for local development
+  consumer-group-id: geo-ip-service
+  ip-response-topic-name: ip-response-topic
+  geolocation-api-url: http://ip-api.com/batch
+  retry-back-off-interval-ms: 2000
+  retry-max-attempts: 5
+  dlq-topic-name: ip-request-dlq
+  bootstrap-servers: localhost:9092
+  redisConnectionString: localhost:6379 # if Redis is in cluster mode the format should be like this: host1:port1,host2:port2,host3:port3

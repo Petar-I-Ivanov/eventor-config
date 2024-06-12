@@ -1,0 +1,10 @@
+application:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer-group-id: short-url-service
+    retry-back-off-interval-ms: 2000
+    retry-max-attempts: 5
+    dlq-topic-name: short-url-dlq
+  tiny-url-api-url: https://tinyurl.com/api-create.php
+  short-url-response-topic: short-url-response
+  short-url-request-topic: short-url-request

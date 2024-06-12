@@ -1,0 +1,37 @@
+server:
+  port: 8083
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8079/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+      
+spring:
+  application:
+    name: poll-service
+    
+  datasource:
+    url: jdbc:mariadb://localhost/poll_database
+    username: ${db_user}
+    password: ${db_password}
+    driver-class-name: org.mariadb.jdbc.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    
+  flyway:
+    baseline-on-migrate: true
+    out-of-order: true
+    baseline-version: 0
+    locations:
+      - classpath:/db/migration
+
+applcation:
+  images.max.size: 10485760 # 10MB
