@@ -41,9 +41,7 @@ application:
   jobs:
     auto-start-end-event: 0 0/1 * ? * * # every 1 minute
     geolocation-scan: 0 0/2 * ? * * # every 2 minutes
-  urlShortener:
-    urlShortenerBaseUrl: https://tinyurl.com/api-create.php
-    appBaseUrl: http://localhost:3000
+  appBaseUrl: http://localhost:3000
   geolocation:
     apiUrl: http://ip-api.com/batch
     amountOfRecordsToProcess: 90
