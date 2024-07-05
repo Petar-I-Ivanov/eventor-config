@@ -7,46 +7,52 @@ spring:
   cloud:
     gateway:
       routes:
-      
         - id: security-service
           uri: lb://security-service
           predicates:
             - Path=/api/v1/auth/**
-            
+
         - id: security-service
           uri: lb://security-service
           predicates:
             - Path=/api/v1/users/**
           filters:
-           - TokenValidatorFilter
-            
+            - TokenValidatorFilter
+
         - id: event-service
           uri: lb://event-service
           predicates:
             - Path=/api/v1/event-groups/**
           filters:
-           - TokenValidatorFilter
-           
+            - TokenValidatorFilter
+
         - id: event-service
           uri: lb://event-service
           predicates:
             - Path=/api/v1/events/**
           filters:
-           - TokenValidatorFilter
-           
+            - TokenValidatorFilter
+
         - id: event-service
           uri: lb://event-service
           predicates:
             - Path=/api/v1/registrations/**
           filters:
-           - TokenValidatorFilter
-           
+            - TokenValidatorFilter
+
         - id: poll-service
           uri: lb://poll-service
           predicates:
             - Path=/api/v1/polls/**
           filters:
-           - TokenValidatorFilter
+            - TokenValidatorFilter
+
+        - id: poll-service
+          uri: lb://poll-service
+          predicates:
+            - Path=/pollWS
+          filters:
+            - TokenValidatorFilter
 
 eureka:
   client:
