@@ -50,9 +50,7 @@ spring:
         - id: poll-service
           uri: lb://poll-service
           predicates:
-            - Path=/pollWS/**
-          filters:
-            - TokenValidatorFilter
+            - Path=/poll-ws/**
 
 eureka:
   client:

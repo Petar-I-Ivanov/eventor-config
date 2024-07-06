@@ -33,5 +33,6 @@ spring:
     locations:
       - classpath:/db/migration
 
-applcation:
+application:
   images.max.size: 10485760 # 10MB
+  appBaseUrl: http://localhost:3000
