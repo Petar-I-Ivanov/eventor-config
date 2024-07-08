@@ -39,7 +39,6 @@ application:
     introspection-client-id: 7193a5c7-71e4-45c2-adb1-7acd2deca515
     introspection-client-secret: 562825d5-5381-4b15-8b23-452e8c71b230
     user-info-endpoint: https://idp.uni-plovdiv.bg/jans-auth/restv1/userinfo
-    jwt-cookie-domain: localhost
   kafka:
     bootstrap-servers: localhost:9092
     consumer-group-id: event-service
